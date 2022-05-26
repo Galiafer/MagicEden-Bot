@@ -4,7 +4,7 @@
 - [EN](#EN)
 - [RU](#RU)
 ---
-##EN
+## EN
 ---
 This bot will help you with nfts mint on MagicEden.io. But it is worth remembering that this bot does not guarantee you a 100% chance of mint, but greatly increases the chance of it
 
@@ -53,8 +53,8 @@ Also you can **launch multiple instances of the bot to bypass minting limit / wa
     `password` --> A password for your wallet
     
 	`project_settings`:
-	     tries: 10 - Tries before script failed,
-        "close_browser_after_mint": true - Close browser after mint (true - Yes, false - No)
+	     `tries: 10` - Tries before script failed,
+        `close_browser_after_mint: true` - Close browser after mint (`true` - Yes, `false` - No)
 
 5. Open CMD and go to directory
 
@@ -80,7 +80,7 @@ Also you can **launch multiple instances of the bot to bypass minting limit / wa
 Также вы можете **запустить несколько экземпляров программы для обхода ограничений или минта с нескольких аккаунтов**
 ---
 
-###Поддержка
+### Поддержка
 
 -   [x] Window
 -   [x] Mac (Intel + m1)
@@ -88,7 +88,7 @@ Also you can **launch multiple instances of the bot to bypass minting limit / wa
 -   [x] MagicEden.io
 
 ---
-- Лучше использовать** Windows** для работы с ботом, так как при использование **Mac** есть шанс что вас** попросят предоставить права приложению для работы**.
+- Лучше использовать **Windows** для работы с ботом, так как при использование **Mac** есть шанс что вас **попросят предоставить права приложению для работы**.
 
 ---
 
@@ -120,8 +120,8 @@ Also you can **launch multiple instances of the bot to bypass minting limit / wa
     `password` -->Пароль для вашего кошелька
     
 	`project_settings`:
-	     tries: 10 - Кол-во попыток перед тем как скрипт перестанет работать,
-        "close_browser_after_mint": true - Загрыть браузер после минта (true - Да, false - Нет)
+	     `tries: 10` - Кол-во попыток перед тем как скрипт перестанет работать,
+        `close_browser_after_mint`: `true` - Загрыть браузер после минта (`true` - Да, `false` - Нет)
 
 5. Откройте командную строку и перейдите в директорию проекта
 
