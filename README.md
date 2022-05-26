@@ -29,11 +29,11 @@ Also you can **launch multiple instances of the bot to bypass minting limit / wa
 
 1. Clone the repository / Download zip file
 
-    `git clone https://github.com/SolanaNFTCollector/Solana-Minting-Bot.git`
+    `https://github.com/Galiafer/MagicEden-Bot.git`
 
     OR
 
-    [Download Zip File](https://github.com/SolanaNFTCollector/Solana-Minting-Bot/archive/refs/heads/main.zip)
+    [Download Zip File](https://github.com/Galiafer/MagicEden-Bot/archive/refs/heads/master.zip)
     
 
 2. Be sure you have installed Python correctly, [here is a link to download](https://www.python.org/downloads/)
@@ -96,11 +96,11 @@ Also you can **launch multiple instances of the bot to bypass minting limit / wa
 
 1. Скопируйте репозиторий / Скачайте zip файл
 
-    `git clone https://github.com/SolanaNFTCollector/Solana-Minting-Bot.git`
+    `https://github.com/Galiafer/MagicEden-Bot.git`
 
     Или
 
-    [Скачать zip файл](https://github.com/SolanaNFTCollector/Solana-Minting-Bot/archive/refs/heads/main.zip)
+    [Скачать zip файл](https://github.com/Galiafer/MagicEden-Bot/archive/refs/heads/master.zip)
     
 
 2. Удостоверьтесь, что у вас скачан **Python** [ссылка на установку](https://www.python.org/downloads/)
