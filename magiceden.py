@@ -1,6 +1,8 @@
 import time
 import os
+import json
 import pathlib
+import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
@@ -13,90 +15,116 @@ from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def mint(values, isWindows):
+class MintBot():
+    def __init__(self, config, translationConfig, language, isWindows):
+        self.isWindows = isWindows
+        self.config = config
+        self.translationConfig = translationConfig
+        self.language = language
 
-    def initWallet():
-        print("Status - Initializing wallet")
-        # add wallet to chrome
+    def initWallet(self, driver):
+        phantomExtensionPage = driver.window_handles[1]
+        mintPage = driver.window_handles[0]
 
-        driver.switch_to.window(driver.window_handles[1])
+        # Adding wallet to a wallet extension | Добавляем кошелек в расширение
+        print(self.translationConfig[self.language]['statuses'][0])
 
-        print("Event - switch window")
+        # Switch to Phantom extension window | Переключаемся на окно с расширением
+        driver.switch_to.window(phantomExtensionPage)
+        print(self.translationConfig[self.language]['event'])
+
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
-        recovery_phrase = driver.find_element(
+        _ = driver.find_element(
             By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]").click()
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//textarea[@placeholder='Secret phrase']")))
-        text_area = driver.find_element(
-            By.XPATH, "//textarea[@placeholder='Secret phrase']").send_keys(values[1])
-        import_btn = driver.find_element(
+        _ = driver.find_element(
+            By.XPATH, "//textarea[@placeholder='Secret phrase']").send_keys(self.config["seedPhrase"])
+        _ = driver.find_element(
             By.XPATH, "//button[@class='sc-bdfBQB bzlPNH']").click()
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//input[@placeholder='Password']")))
-        password1 = driver.find_element(
-            By.XPATH, "//input[@placeholder='Password']").send_keys(values[2])
-        password2 = driver.find_element(
-            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(values[2])
-        check_box = driver.find_element(
+        _ = driver.find_element(
+            By.XPATH, "//input[@placeholder='Password']").send_keys(self.config["password"])
+        _ = driver.find_element(
+            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(self.config["password"])
+        _ = driver.find_element(
             By.XPATH, "//input[@type='checkbox']").click()
-        submit = driver.find_element(
+        _ = driver.find_element(
             By.XPATH, "//button[@type='submit']").click()
+
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Continue')]")))
-        continue_ = driver.find_element(
+        continueButton = driver.find_element(
             By.XPATH, "//button[contains(text(),'Continue')]")
-        driver.execute_script("arguments[0].click();", continue_)
+        # Pressing on Continue button | Нажимаем на кнопку Продолжить
+        driver.execute_script("arguments[0].click();", continueButton)
+
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Finish')]")))
-        finish = driver.find_element(
+        finishInitializing = driver.find_element(
             By.XPATH, "//button[contains(text(),'Finish')]")
-        driver.execute_script("arguments[0].click();", finish)
-        print("Status - Finished Initializing wallet")
-        driver.switch_to.window(driver.window_handles[0])
+        # Finishing wallet initializing | Завершаем инициализацию кошелька
+        driver.execute_script("arguments[0].click();", finishInitializing)
 
-    def selectWallet():
-        print("Status - Selecting wallet on ME")
+        print(self.translationConfig[self.language]['statuses'][1])
+        driver.switch_to.window(mintPage)
+
+    def selectWallet(self, driver):
+
+        print(self.translationConfig[self.language]['statuses'][2])
+
+        # Select Main Wallet | Выбираем основной кошелёк
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(), 'Select Wallet')]")))
-        select_wallet = driver.find_element(
+        main_wallet = driver.find_element(
             By.XPATH, "//button[contains(text(), 'Select Wallet')]")
-        select_wallet.click()
+        main_wallet.click()
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Phantom')]")))
-        phantom = driver.find_element(
+        phantomExtension = driver.find_element(
             By.XPATH, "//button[contains(text(),'Phantom')]")
-        phantom.click()
+        phantomExtension.click()
 
         WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
-        driver.switch_to.window(driver.window_handles[1])
+        phantomExtensionPage = driver.window_handles[1]
+        mintPage = driver.window_handles[0]
+
+        driver.switch_to.window(phantomExtensionPage)
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Connect')]")))
-        popup_connect = driver.find_element(
+        popup = driver.find_element(
             By.XPATH, "//button[contains(text(),'Connect')]")
-        popup_connect.click()
-        driver.switch_to.window(driver.window_handles[0])
+        popup.click()
+        driver.switch_to.window(mintPage)
         time.sleep(3)
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'I understand')]")))
-        agree = driver.find_element(
+        agreeButton = driver.find_element(
             By.XPATH, "//button[contains(text(),'I understand')]")
-        agree.click()
-        print("Status - Finished Selecting Wallet on ME")
+        agreeButton.click()
+        print(self.translationConfig[self.language]['statuses'][3])
 
-    def avaitMint():
-        print("Status - Waiting for Mint, maximum time wait is 24h, after that please restart bot")
-        WebDriverWait(driver, 60*60*24).until(EC.presence_of_element_located(
+    def awaitMint(self, driver):
+        # Waiting for Mint
+        mintTime = datetime.datetime.timestamp(
+            driver.find_element(By.XPATH, '//*[@id="content"]/div/div[1]/div[1]/div[3]/div[2]/div/div[1]/div[2]/div'))
+
+        print(self.translationConfig[self.language]['statuses'][4])
+
+        WebDriverWait(driver, 60 * 60 * 24).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(), 'Mint your token!')]")))
-        print("Found the mint button")
-        trys = 0
-        while trys < 10:  # Try to mint 10 times
-            mint_your_token = driver.find_element(
+        print(self.translationConfig[self.language]['mint_button'])
+
+        tries = self.config['project_settings']['tries']  # Default is 10 | Стандартное значение 10
+        while tries < 10:
+            mintButton = driver.find_element(
                 By.XPATH, "//button[contains(text(), 'Mint your token!')]")
-            driver.execute_script("arguments[0].click();", mint_your_token)
-            print("Found the button")
+            driver.execute_script("arguments[0].click();", mintButton)
+            print(self.translationConfig[self.language]['button'])
 
             original_window = driver.current_window_handle
             WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
@@ -106,50 +134,49 @@ def mint(values, isWindows):
                     break
             WebDriverWait(driver, 60).until(EC.presence_of_element_located(
                 (By.XPATH, "//button[contains(text(), 'Approve')]")))
-            approve = driver.find_element(
+            approveButton = driver.find_element(
                 By.XPATH, "//button[contains(text(), 'Approve')]")
-            approve.click()
-            trys += 1
+            approveButton.click()
+            tries += 1
 
-    print("Bot started")
-    if isWindows:
-        print("OS : Windows")
-    else:
-        print("OS : Mac")
+    @staticmethod
+    def getDriver() -> webdriver.Chrome:
 
-    options = Options()
+        options = Options()
 
-    options.add_extension("Phantom.crx")
-    options.add_argument("--disable-gpu")
+        options.add_extension("Phantom.crx")
+        options.add_argument("--disable-gpu")
 
-    # to keep window open after mint uncomment option below, side effect, will open alot of chrome windows
-    #options.add_experimental_option("detach", True)
+        prefs = {"profile.managed_default_content_settings.images": 2}
+        options.add_experimental_option("prefs", prefs)
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-    prefs = {"profile.managed_default_content_settings.images": 2}
-    options.add_experimental_option("prefs", prefs)
-    options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        # options for chrome install | Разрешение на установку расширения
+        os.environ['WDM8LOCAL'] = '1'
 
-    # options for chrome install
-    os.environ['WDM8LOCAL'] = '1'
+        driver = webdriver.Chrome(
+            executable_path=ChromeDriverManager().install(), options=options)
+        return driver
 
-    driver = webdriver.Chrome(
-        executable_path=ChromeDriverManager().install(), options=options)
-    print("Assertion - successfully found chrome driver")
+    def start(self):
 
-    # opens the launchpad page
-    driver.get(values[0])
-    driver.maximize_window()
+        print(self.translationConfig[self.language]['start'])
+        if self.isWindows:
+            print("OS : Windows")
+        else:
+            print("OS : Mac")
 
-    # Actions - Initialize wallet
-    initWallet()
+        driver = self.getDriver()
+        print(self.translationConfig[self.language]['assertion'])
 
-    # Actions - select wallet on magic eden
-    selectWallet()
+        # open the launchpad page
+        driver.get(self.config['launchpadLink'])
+        driver.maximize_window()
 
-    # Actions - close popup
-    # closePopup()
+        self.initWallet(driver)
+        self.selectWallet(driver)
+        self.awaitMint(driver)
 
-    # Actions - MINTS WHEN TIMER IS UP
-    avaitMint()
-
-    print("Minting Finished")
+        print(self.translationConfig[self.language]['finish'])
+        if self.config['project_settings']['close_browser_after_mint']:
+            driver.close()

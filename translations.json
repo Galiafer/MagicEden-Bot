@@ -1,0 +1,24 @@
+{
+  "en" : {
+    "error": "Could not recognize link",
+    "found": "Found magiceden.io link",
+    "start" : "Bot started",
+    "statuses" : ["Initializing wallet", "Finished Initializing wallet", "Selecting wallet main wallet", "Finished Selecting main wallet", "Waiting for Mint"],
+    "event" : "Switch window",
+    "mint_button": "Found the mint button",
+    "button": "Found the button",
+    "assertion": "Successfully found chrome driver",
+    "finish": "Minting Finished"
+  },
+  "ru" : {
+    "error": "Не смог распознать ссылку на лаунчпад",
+    "found": "Нашёл ссылку на magiceden.io",
+    "start" : "Бот начал работу",
+    "statuses" : ["Инициализирую кошелёк", "Завершил инициализвацию кошелька", "Выбираю основной кошелёк", "Закончил выбирать главный кошелёк", "Жду начала минта"],
+    "event" : "Переключил окно",
+    "mint_button": "Нашёл кнопку минта",
+    "button": "Нашёл кнопку",
+    "assertion": "Успешно нашёл chromedriver",
+    "finish": "Минт завершён"
+  }
+}
