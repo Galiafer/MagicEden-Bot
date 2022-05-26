@@ -25,11 +25,12 @@ class MintBot():
     def initWallet(self, driver):
         phantomExtensionPage = driver.window_handles[1]
         mintPage = driver.window_handles[0]
-
+        
         # Adding wallet to a wallet extension | Добавляем кошелек в расширение
         print(self.translationConfig[self.language]['statuses'][0])
 
         # Switch to Phantom extension window | Переключаемся на окно с расширением
+        WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
         driver.switch_to.window(phantomExtensionPage)
         print(self.translationConfig[self.language]['event'])
 
