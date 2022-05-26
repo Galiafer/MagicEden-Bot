@@ -110,8 +110,6 @@ class MintBot():
 
     def awaitMint(self, driver):
         # Waiting for Mint
-        mintTime = datetime.datetime.timestamp(
-            driver.find_element(By.XPATH, '//*[@id="content"]/div/div[1]/div[1]/div[3]/div[2]/div/div[1]/div[2]/div'))
 
         print(self.translationConfig[self.language]['statuses'][4])
 
