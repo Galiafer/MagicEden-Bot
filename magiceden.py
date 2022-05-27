@@ -22,15 +22,14 @@ class MintBot():
         self.language = language
 
     def initWallet(self, driver):
-        phantomExtensionPage = driver.window_handles[1]
-        mintPage = driver.window_handles[0]
+        #phantomExtensionPage = driver.window_handles[1]
+        #mintPage = driver.window_handles[0]
         
         # Adding wallet to a wallet extension | Добавляем кошелек в расширение
         print(self.translationConfig[self.language]['statuses'][0])
 
         # Switch to Phantom extension window | Переключаемся на окно с расширением
-        WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
-        driver.switch_to.window(phantomExtensionPage)
+        driver.switch_to.window(driver.window_handles[1])
         print(self.translationConfig[self.language]['event'])
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
@@ -69,7 +68,7 @@ class MintBot():
         driver.execute_script("arguments[0].click();", finishInitializing)
 
         print(self.translationConfig[self.language]['statuses'][1])
-        driver.switch_to.window(mintPage)
+        driver.switch_to.window(driver.window_handles[0])
 
     def selectWallet(self, driver):
 
