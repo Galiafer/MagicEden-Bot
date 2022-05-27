@@ -25,7 +25,7 @@ language = 'ru' if locale.getdefaultlocale()[0] == "ru_RU" else 'en'
 
 if "magiceden.io" in config['launchpadLink']:
     print(translation[language]['found'])
-    bot = MintBot(config, translation, language, isWindows)
+    bot = MintBot(config, translation, language)
 
     bot.start()
 else:
