@@ -16,8 +16,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class MintBot():
-    def __init__(self, config, translationConfig, language, isWindows):
-        self.isWindows = isWindows
+    def __init__(self, config, translationConfig, language):
         self.config = config
         self.translationConfig = translationConfig
         self.language = language
@@ -160,10 +159,6 @@ class MintBot():
     def start(self):
 
         print(self.translationConfig[self.language]['start'])
-        if self.isWindows:
-            print("OS : Windows")
-        else:
-            print("OS : Mac")
 
         driver = self.getDriver()
         print(self.translationConfig[self.language]['assertion'])
