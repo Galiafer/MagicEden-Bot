@@ -88,17 +88,17 @@ class MintBot():
         phantomExtension.click()
 
         WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
-        phantomExtensionPage = driver.window_handles[1]
-        mintPage = driver.window_handles[0]
+        #phantomExtensionPage = driver.window_handles[1]
+        #mintPage = driver.window_handles[0]
 
-        driver.switch_to.window(phantomExtensionPage)
+        driver.switch_to.window(driver.window_handles[1])
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'Connect')]")))
         popup = driver.find_element(
             By.XPATH, "//button[contains(text(),'Connect')]")
         popup.click()
-        driver.switch_to.window(mintPage)
+        driver.switch_to.window(driver.window_handles[0])
         time.sleep(3)
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(),'I understand')]")))
