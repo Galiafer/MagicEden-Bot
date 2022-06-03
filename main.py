@@ -29,4 +29,4 @@ if "magiceden.io" in config['launchpadLink']:
 
     bot.start()
 else:
-    print("Could not recognize link")
+    print("Please paste correct url")
