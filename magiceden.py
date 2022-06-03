@@ -22,8 +22,8 @@ class MintBot():
         self.language = language
 
     def initWallet(self, driver):
-        #phantomExtensionPagee = driver.window_handles[1]
-        #mintPage = driver.window_handles[0]
+        #phantomExtensionPagee = driver.window_handles[1] - **
+        #mintPage = driver.window_handles[0] - **
         
         # Adding wallet to a wallet extension | Добавляем кошелек в расширение
         print(self.translationConfig[self.language]['statuses'][0])
