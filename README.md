@@ -18,7 +18,7 @@ It is better to use **Windows**, because when using **Mac** there is a possiblit
 ### Tutorial
 1. Clone the repository / Download zip file:
 
-	`https://github.com/Galiafer/MagicEden-Bot.git`
+	`git clone https://github.com/Galiafer/MagicEden-Bot.git`
 
 	OR
 
@@ -70,7 +70,7 @@ It is better to use **Windows**, because when using **Mac** there is a possiblit
 ### Tutorial
 1. Скопируйте репозиторий / Скачайте zip файл:
 
-	`https://github.com/Galiafer/MagicEden-Bot.git`
+	`git clone https://github.com/Galiafer/MagicEden-Bot.git`
 
 	ИЛИ
 
