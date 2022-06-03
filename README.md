@@ -135,5 +135,5 @@ Also you can **launch multiple instances of the bot to bypass minting limit / wa
 ---
 # Хороших всем минтов.
 ###### Вы можете поддержать меня SOL : HDyFGcPa6HNoeER4zcrvJfA5XWB3TKHUoG3u4sJU5JLP
-###### Вы можете поддержать меня SOL (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
+###### Вы можете поддержать меня BUSD (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
 ---
