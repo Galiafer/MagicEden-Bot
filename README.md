@@ -2,8 +2,8 @@
 ###### Created by Galiaf
 
 ------------
-- **[EN](en)**
-- **[RU](ru)**
+- **[EN](https://github.com/Galiafer/MagicEden-Bot#en)**
+- **[RU](https://github.com/Galiafer/MagicEden-Bot#ru)**
 
 ------------
 
