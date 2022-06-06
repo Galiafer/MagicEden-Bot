@@ -22,8 +22,8 @@ class MintBot():
         self.language = language
 
     def initWallet(self, driver):
-        #phantomExtensionPagee = driver.window_handles[1] - 
-        #mintPage = driver.window_handles[0] - 
+        #phantomExtensionPagee = driver.window_handles[1]
+        #mintPage = driver.window_handles[0]
         
         # Adding wallet to a wallet extension | Добавляем кошелек в расширение
         print(self.translationConfig[self.language]['statuses'][0])
@@ -33,39 +33,41 @@ class MintBot():
         print(self.translationConfig[self.language]['event'])
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]")))
-        _ = driver.find_element(
-            By.XPATH, "//button[contains(text(),'Use Secret Recovery Phrase')]").click()
+            (By.XPATH, "//button[contains(text(),'I already have a wallet')]")))
+        driver.find_element(
+            By.XPATH, "//button[contains(text(),'I already have a wallet')]").click()
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//textarea[@placeholder='Secret phrase']")))
-        _ = driver.find_element(
-            By.XPATH, "//textarea[@placeholder='Secret phrase']").send_keys(self.config["seedPhrase"])
-        _ = driver.find_element(
-            By.XPATH, "//button[@class='sc-bdfBQB bzlPNH']").click()
-        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//input[@placeholder='Password']")))
-        _ = driver.find_element(
-            By.XPATH, "//input[@placeholder='Password']").send_keys(self.config["password"])
-        _ = driver.find_element(
-            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(self.config["password"])
-        _ = driver.find_element(
-            By.XPATH, "//input[@type='checkbox']").click()
-        _ = driver.find_element(
+            (By.XPATH, "//*[@id='word_0']")))
+        for i in range(0, 12):
+            driver.find_element(By.XPATH, f"//*[@id='word_{i}']").send_keys(self.config["seedPhrase"].split(' ')[i])
+        driver.find_element(By.XPATH, "//button[@type='submit']").click()
+
+        # WebDriverWait(driver, 60).until(EC.presence_of_element_located(
+        #     (By.XPATH, "//button[@type='submit']")))
+        time.sleep(5)
+        driver.find_element(
             By.XPATH, "//button[@type='submit']").click()
 
-        WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'Continue')]")))
-        continueButton = driver.find_element(
-            By.XPATH, "//button[contains(text(),'Continue')]")
-        # Pressing on Continue button | Нажимаем на кнопку Продолжить
-        driver.execute_script("arguments[0].click();", continueButton)
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'Finish')]")))
-        finishInitializing = driver.find_element(
-            By.XPATH, "//button[contains(text(),'Finish')]")
-        # Finishing wallet initializing | Завершаем инициализацию кошелька
-        driver.execute_script("arguments[0].click();", finishInitializing)
+            (By.XPATH, "//input[@placeholder='Password']")))
+        driver.find_element(
+            By.XPATH, "//input[@placeholder='Password']").send_keys(self.config["password"])
+        driver.find_element(
+            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(self.config["password"])
+        driver.find_element(
+            By.XPATH, "//input[@type='checkbox']").click()
+        driver.find_element(
+            By.XPATH, "//button[@type='submit']").click()
+
+        time.sleep(5)
+        # Pressing on Continue button | Нажимаем на кнопку Продолжить
+        driver.find_element(
+            By.XPATH, "//button[contains(text(),'Continue')]").click()
+
+        time.sleep(5)
+        driver.find_element(
+            By.XPATH, "//button[contains(text(),'Finish')]").click()
 
         print(self.translationConfig[self.language]['statuses'][1])
         driver.switch_to.window(driver.window_handles[0])
