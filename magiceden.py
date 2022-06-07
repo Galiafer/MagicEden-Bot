@@ -42,8 +42,6 @@ class MintBot():
             driver.find_element(By.XPATH, f"//*[@id='word_{i}']").send_keys(self.config["seedPhrase"].split(' ')[i])
         driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
-        # WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-        #     (By.XPATH, "//button[@type='submit']")))
         time.sleep(5)
         driver.find_element(
             By.XPATH, "//button[@type='submit']").click()
