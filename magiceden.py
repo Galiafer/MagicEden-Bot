@@ -106,7 +106,6 @@ class MintBot():
         print(self.translationConfig[self.language]['statuses'][3])
 
     def awaitMint(self, driver):
-        # Waiting for Mint
 
         print(self.translationConfig[self.language]['statuses'][4])
 
