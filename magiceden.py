@@ -30,9 +30,10 @@ class MintBot():
         print(self.translationConfig[self.language]['event'])
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'I already have a wallet')]")))
+            (By.XPATH, "//*[@id='root']/main/div[2]/div/div[2]/button[2]")))
+
         driver.find_element(
-            By.XPATH, "//button[contains(text(),'I already have a wallet')]").click()
+            By.XPATH, "//*[@id='root']/main/div[2]/div/div[2]/button[2]").click()
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//*[@id='word_0']")))
         for i in range(0, 12):
@@ -45,11 +46,11 @@ class MintBot():
 
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//input[@placeholder='Password']")))
+            (By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/input")))
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Password']").send_keys(self.config["password"])
+            By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/input").send_keys(self.config["password"])
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(self.config["password"])
+            By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/div/div/input").send_keys(self.config["password"])
         driver.find_element(
             By.XPATH, "//input[@type='checkbox']").click()
         driver.find_element(
@@ -58,11 +59,11 @@ class MintBot():
         time.sleep(5)
         # Pressing on Continue button | Нажимаем на кнопку Продолжить
         driver.find_element(
-            By.XPATH, "//button[contains(text(),'Continue')]").click()
+            By.XPATH, "//*[@id='root']/main/div[2]/form/button").click()
 
         time.sleep(5)
         driver.find_element(
-            By.XPATH, "//button[contains(text(),'Finish')]").click()
+            By.XPATH, "//*[@id='root']/main/div[2]/form/button").click()
 
         print(self.translationConfig[self.language]['statuses'][1])
         driver.switch_to.window(driver.window_handles[0])
@@ -91,9 +92,9 @@ class MintBot():
         driver.switch_to.window(driver.window_handles[1])
 
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'Connect')]")))
+            (By.XPATH, "//*[@id='root']/div/div[1]/div[2]/div/button[2]")))
         popup = driver.find_element(
-            By.XPATH, "//button[contains(text(),'Connect')]")
+            By.XPATH, "//*[@id='root']/div/div[1]/div[2]/div/button[2]")
         popup.click()
         driver.switch_to.window(driver.window_handles[0])
         time.sleep(3)
@@ -127,9 +128,9 @@ class MintBot():
                     driver.switch_to.window(window_handle)
                     break
             WebDriverWait(driver, 60).until(EC.presence_of_element_located(
-                (By.XPATH, "//button[contains(text(), 'Approve')]")))
+                (By.XPATH, "//*[@id='root']/div/div[1]/div/div[2]/div/button[2]")))
             approveButton = driver.find_element(
-                By.XPATH, "//button[contains(text(), 'Approve')]")
+                By.XPATH, "//*[@id='root']/div/div[1]/div/div[2]/div/button[2]")
             approveButton.click()
             tries += 1
 
