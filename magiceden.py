@@ -22,10 +22,8 @@ class MintBot():
         self.language = language
 
     def initWallet(self, driver):
-        # Adding wallet to a wallet extension | Добавляем кошелек в расширение
         print(self.translationConfig[self.language]['statuses'][0])
 
-        # Switch to Phantom extension window | Переключаемся на окно с расширением
         driver.switch_to.window(driver.window_handles[1])
         print(self.translationConfig[self.language]['event'])
 
@@ -57,7 +55,6 @@ class MintBot():
             By.XPATH, "//button[@type='submit']").click()
 
         time.sleep(5)
-        # Pressing on Continue button | Нажимаем на кнопку Продолжить
         driver.find_element(
             By.XPATH, "//*[@id='root']/main/div[2]/form/button").click()
 
@@ -72,7 +69,6 @@ class MintBot():
 
         print(self.translationConfig[self.language]['statuses'][2])
 
-        # Select Main Wallet | Выбираем основной кошелёк
         WebDriverWait(driver, 60).until(EC.presence_of_element_located(
             (By.XPATH, "//button[contains(text(), 'Select Wallet')]")))
         main_wallet = driver.find_element(
@@ -113,7 +109,7 @@ class MintBot():
             (By.XPATH, "//button[contains(text(), 'Mint your token!')]")))
         print(self.translationConfig[self.language]['mint_button'])
 
-        tries = self.config['project_settings']['tries']  # Default is 10 | Стандартное значение 10
+        tries = self.config['project_settings']['tries']
         while tries < 10:
             mintButton = driver.find_element(
                 By.XPATH, "//button[contains(text(), 'Mint your token!')]")
@@ -145,7 +141,6 @@ class MintBot():
         options.add_experimental_option("prefs", prefs)
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-        # options for chrome install | Разрешение на установку расширения
         os.environ['WDM8LOCAL'] = '1'
 
         driver = webdriver.Chrome(
@@ -159,7 +154,6 @@ class MintBot():
         driver = self.getDriver()
         print(self.translationConfig[self.language]['assertion'])
 
-        # open the launchpad page
         driver.get(self.config['launchpadLink'])
         driver.maximize_window()
 
