@@ -1,7 +1,7 @@
 {
-    "launchpadLink": "launcpad link",
-    "seedPhrase": "your seedPhrase",
-    "password": "your password",
+    "launchpadLink": "https://www.magiceden.io/launchpad/exiles",
+    "seedPhrase": "crumble holiday phrase anchor field middle any left error retreat palace aspect",
+    "password": "123456788",
     "project_settings" : {
         "tries": 10,
         "close_browser_after_mint": true

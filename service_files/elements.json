@@ -1,0 +1,20 @@
+{
+  "phantom": {
+    "importButton": "//*[@id=\"root\"]/main/div[2]/div/div[2]/button[2]",
+    "submitButton": "//button[@type=\"submit\"]",
+    "passwordField": "//*[@id=\"root\"]/main/div[2]/form/div/div/div[2]/input",
+    "confirmPasswordField": "//*[@id=\"root\"]/main/div[2]/form/div/div/div[2]/div/div/input",
+    "checkbox": "//input[@type=\"checkbox\"]",
+    "continueButton": "//*[@id=\"root\"]/main/div[2]/form/button"
+  },
+  "magiceden": {
+    "connectWallet": "//*[@id=\"root\"]/div/header/nav/div[2]/div[2]/div/button[2]",
+    "phantomWallet": "/html/body/div[4]/div[1]/div/ul/li/button",
+    "understandButton": "//*[@id=\"content\"]/div/div[4]/div/div/div/div/div/div/button[1]",
+    "mintButton": "//*[@id=\"content\"]/div/div[1]/div[2]/div[2]/div[3]/div/div/div[1]/button",
+    "popup": {
+      "connectButton": "//*[@id=\"root\"]/div/div[1]/div[2]/div/button[2]",
+      "approveButton": "//*[@id=\"root\"]/div/div[1]/div/div[2]/div/button[2]"
+    }
+  }
+}
