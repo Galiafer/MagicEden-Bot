@@ -54,10 +54,6 @@ It is better to use **Windows**, because when using **Mac** there is a possiblit
 ------------
 ### Good luck to all.
 ------------
-###### You can support me with some SOL : 5ExvsyA8dBZvanEh2qncekmdsekFLbEDUX2wScmmqJ7e
-###### You can support me with some BUSD (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
-
-------------
 
 ## RU
 > Этот бот поможет вам с минтом нфт на сайте MagicEden.io. Но стоить помнить, что он не гарантирует вам 100% минт, но сильно увеличивает этот шанс
@@ -105,8 +101,4 @@ It is better to use **Windows**, because when using **Mac** there is a possiblit
 
 ------------
 ### Хороших всем минтов.
-------------
-###### Вы можете поддержать меня SOL : 5ExvsyA8dBZvanEh2qncekmdsekFLbEDUX2wScmmqJ7e
-###### Вы можете поддержать меня BUSD (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
-
 ------------
