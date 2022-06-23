@@ -23,10 +23,8 @@ class MintBot():
         self.language = language
 
     def initWallet(self, driver):
-        # Adding wallet to a wallet extension | Добавляем кошелек в расширение
         print(self.translationConfig[self.language]['statuses'][0])
 
-        # Switch to Phantom extension window | Переключаемся на окно с расширением
         driver.switch_to.window(driver.window_handles[1])
         print(self.translationConfig[self.language]['event'])
 
@@ -48,7 +46,6 @@ class MintBot():
         driver.find_element(By.XPATH, self.elements['phantom']['submitButton']).click()
 
         time.sleep(5)
-        # Pressing on Continue button | Нажимаем на кнопку Продолжить
         driver.find_element(By.XPATH, self.elements['phantom']['continueButton']).click()
 
         time.sleep(5)
@@ -61,7 +58,6 @@ class MintBot():
 
         print(self.translationConfig[self.language]['statuses'][2])
 
-        # Select Main Wallet | Выбираем основной кошелёк
         WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, self.elements['magiceden']['connectWallet'])))
         main_wallet = driver.find_element(By.XPATH, self.elements['magiceden']['connectWallet'])
         main_wallet.click()
@@ -87,7 +83,6 @@ class MintBot():
         print(self.translationConfig[self.language]['statuses'][3])
 
     def awaitMint(self, driver):
-        # Waiting for Mint
 
         print(self.translationConfig[self.language]['statuses'][4])
 
@@ -127,7 +122,6 @@ class MintBot():
         options.add_experimental_option("prefs", prefs)
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-        # options for chrome install | Разрешение на установку расширения
         os.environ['WDM8LOCAL'] = '1'
 
         driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
@@ -148,7 +142,6 @@ class MintBot():
         self.selectWallet(driver)
         self.awaitMint(driver)
 
-        # print(self.translationConfig[self.language]['finish'])
-        # if self.config['project_settings']['close_browser_after_mint']:
-        #     driver.close()
-        input("SOSI")
+        print(self.translationConfig[self.language]['finish'])
+        if self.config['project_settings']['close_browser_after_mint']:
+            driver.close()
